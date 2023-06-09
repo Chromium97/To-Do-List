@@ -1,0 +1,34 @@
+<%- include('header'); -%>
+    <div class="box" id="heading">
+        <h1><%= listTitle %>
+        </h1>
+    </div>
+    <div class="btnContainer">
+        <form method="POST" action="/navigate" class="nav" >
+            <button class="navBtn" type="submit" name="list" value=<%= listTitle %>><%= navTitle %></button>
+        </form>
+    </div>  
+
+    <div class="box">
+        <% for (let item of newListItem){%>
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= item %>
+                </p>
+            </div>
+            <% } %>
+
+        <form method="POST" action="/" class="item">
+            <input type="text" name="newItem" placeholder="Add Item Here" autocomplete="off">
+            <button class="addBtn" type="submit" name="list" value=<%= listTitle %>>+</button>
+        </form>
+    </div>
+
+
+
+    <form method="POST" action="/clear" >
+        <button class="clearBtn" type="submit" name="list" value=<%= listTitle %>>Clear</button>
+    </form>
+
+<%- include('footer'); -%>
